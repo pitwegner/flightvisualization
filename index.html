@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css">
+  <title>Map of Australia</title>
+</head>
+<body>
+  <div id="btn-zoom">
+    <i id="btn-zoom-in" class="fas fa-search-plus fa-2x" aria-hidden="true"></i><br />
+    <i id="btn-zoom-out"class="fas fa-search-minus fa-2x" aria-hidden="true"></i>
+  </div>
+  <div id="btn-toggle">
+    <i id="btn-drag" class="fas fa-arrows-alt fa-2x" aria-hidden="true" style="float: right; cursor: grab;"></i>
+    <h3>Flight Price</h3>
+    Absolute <label class="switch">
+      <input type="checkbox" id="btn-toggle-box">
+      <span class="slider"></span>
+    </label> Relative
+  </div>
+  <div id="map"></div>
+  <script src="australia.js"></script>
+  <script src="data.js"></script>
+  <script src="planes.js"></script>
+  <script src="map.js"></script>
+</body>
+</html>
