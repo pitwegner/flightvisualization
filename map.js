@@ -109,6 +109,7 @@ function zoomHandler() {
   g.attr("transform", d3.event.transform)
   scale = d3.event.transform.k
   g.selectAll(".city").attr("r", NODE_WIDTH / scale)
+  d3.selectAll('.caption').remove()
 }
 
 function mouseOverNodeHandler(d) {
