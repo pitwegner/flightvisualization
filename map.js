@@ -93,6 +93,7 @@ function drawEdgeTooltip(edge) {
       "<tr><td>Relative Price:</td><td>" + (edge.price / edge.distance * 1000).toFixed(3) + " AUD/km</td></tr>" +
       "<tr><td>Aircraft Model:</td><td>" + edge.aircraft_model + "</td></tr>" +
       "<tr><td>Motor Model:</td><td>" + edge.motor_model + "</td></tr>" +
+      "<tr><td>Airspace Class:</td><td>" + edge.airspace_class + "</td></tr>" +
       "</table>")
 }
 
