@@ -131,6 +131,6 @@ input:checked + .slider:before {
 #legend .cell {
   cursor: pointer;
 }
-#btn-drag {
+* {
   touch-action: none;
 }
