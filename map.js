@@ -506,7 +506,6 @@ document.getElementById("btn-drag").addEventListener("touchend", function (e){
 })
 
 document.body.addEventListener("touchmove", function (e){
-  e.preventDefault()
   if (dragged) {
     document.getElementById("btn-toggle").style.left = e.touches[0].clientX - dragPoint[0] - 20 + "px"
     document.getElementById("btn-toggle").style.top = e.touches[0].clientY - dragPoint[1] - 20 + "px"
