@@ -211,20 +211,15 @@ g.append("g")
   .attr("vector-effect", "non-scaling-stroke")
 
 // Draw Edges as quadratic bezier curves
-function bezier(t, p0, p1, p2) {
-  return [(1-t)*((1-t)*p0[0] + t*p1[0]) + t*((1-t)*p1[0] + t*p2[0]),
-    (1-t)*((1-t)*p0[1] + t*p1[1]) + t*((1-t)*p1[1] + t*p2[1])]
-}
-
 data.edges = data.edges.map((edge) => {
   const source = data.nodes.find((node) => node.id === edge.source)
   const target = data.nodes.find((node) => node.id === edge.target)
   const p0 = projection([source.location.lat, source.location.lon])
   const p2 = projection([target.location.lat, target.location.lon])
-  const middle = [p0[0]+(p2[0]-p0[0])/2,p0[1]+(p2[1]-p0[1])/2]
-  const length = Math.sqrt((p2[0]-p0[0])*(p2[0]-p0[0])+(p2[1]-p0[1])*(p2[1]-p0[1]))
-  const orth = [p2[1]-p0[1], p0[0]-p2[0]]
-  const p1_dist = [middle[0]+orth[0]/Math.log(length), middle[1]+orth[1]/Math.log(length)]
+  //const middle = [p0[0]+(p2[0]-p0[0])/2,p0[1]+(p2[1]-p0[1])/2]
+  //const length = Math.sqrt((p2[0]-p0[0])*(p2[0]-p0[0])+(p2[1]-p0[1])*(p2[1]-p0[1]))
+  //const orth = [p2[1]-p0[1], p0[0]-p2[0]]
+  //const p1_dist = [middle[0]+orth[0]/Math.log(length), middle[1]+orth[1]/Math.log(length)]
   const tweaks = {
     'brisbane_darwin': [8, -8],
     'brisbane_cairns': [-8, 8],
@@ -314,6 +309,11 @@ function onEnd(context, length){
     .attrTween("transform", transition)
     .on("end", function(d){onEnd(context, length)})
     .ease(d3.easeLinear)
+}
+
+function bezier(t, p0, p1, p2) {
+  return [(1-t)*((1-t)*p0[0] + t*p1[0]) + t*((1-t)*p1[0] + t*p2[0]),
+    (1-t)*((1-t)*p0[1] + t*p1[1]) + t*((1-t)*p1[1] + t*p2[1])]
 }
 
 function curveLength(p0, p1, p2){
@@ -491,6 +491,30 @@ document.body.addEventListener("mousemove", function (e){
     document.getElementById("legend2").style.top = e.clientY - dragPoint[1] + 290 + "px"
     document.getElementById("legend3").style.left = e.clientX - dragPoint[0] + 7 + "px"
     document.getElementById("legend3").style.top = e.clientY - dragPoint[1] + 435 + "px"
+  }
+})
+
+document.getElementById("btn-drag").addEventListener("touchstart", function (e){
+  dragged = true
+  this.style.cursor = "move"
+  dragPoint = [e.touches[0].clientX - document.getElementById("btn-toggle").getBoundingClientRect().left, e.touches[0].clientY - document.getElementById("btn-toggle").getBoundingClientRect().top]
+})
+
+document.getElementById("btn-drag").addEventListener("touchend", function (e){
+  dragged = false
+  this.style.cursor = "grab"
+})
+
+document.body.addEventListener("touchmove", function (e){
+  if (dragged) {
+    document.getElementById("btn-toggle").style.left = e.touches[0].clientX - dragPoint[0] - 20 + "px"
+    document.getElementById("btn-toggle").style.top = e.touches[0].clientY - dragPoint[1] - 20 + "px"
+    document.getElementById("legend").style.left = e.touches[0].clientX - dragPoint[0] + 7 + "px"
+    document.getElementById("legend").style.top = e.touches[0].clientY - dragPoint[1] + 58 + "px"
+    document.getElementById("legend2").style.left = e.touches[0].clientX - dragPoint[0] + 7 + "px"
+    document.getElementById("legend2").style.top = e.touches[0].clientY - dragPoint[1] + 290 + "px"
+    document.getElementById("legend3").style.left = e.touches[0].clientX - dragPoint[0] + 7 + "px"
+    document.getElementById("legend3").style.top = e.touches[0].clientY - dragPoint[1] + 435 + "px"
   }
 })
 
