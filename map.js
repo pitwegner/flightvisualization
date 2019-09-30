@@ -75,6 +75,7 @@ function drawNodeTooltip(node) {
   d3.select("#map")
     .append("div")
     .attr("class", "caption")
+    .attr("touch-action", "none")
     .style("left", bounds.x + "px")		
     .style("top", bounds.y + "px")
     .html(node.label)
@@ -84,6 +85,7 @@ function drawEdgeTooltip(edge) {
   d3.select("#map")
     .append("div")
     .attr("class", "caption")
+    .attr("touch-action", "none")
     .style("left", d3.event.pageX + "px")		
     .style("top", d3.event.pageY + "px")
     .html("<table>" +

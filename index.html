@@ -12,16 +12,16 @@
   <title>Map of Australia</title>
 </head>
 <body>
-  <div id="btn-zoom">
-    <i id="btn-zoom-in" class="fas fa-search-plus fa-2x" aria-hidden="true"></i><br />
-    <i id="btn-zoom-out"class="fas fa-search-minus fa-2x" aria-hidden="true"></i>
+  <div id="btn-zoom" touch-action="none">
+    <i id="btn-zoom-in" class="fas fa-search-plus fa-2x" aria-hidden="true" touch-action="none"></i><br />
+    <i id="btn-zoom-out"class="fas fa-search-minus fa-2x" aria-hidden="true" touch-action="none"></i>
   </div>
-  <div id="btn-toggle">
-    <i id="btn-drag" class="fas fa-arrows-alt fa-2x" aria-hidden="true" style="float: right; cursor: grab;"></i>
-    <h3>Flight Price</h3>
-    Absolute <label class="switch">
-      <input type="checkbox" id="btn-toggle-box">
-      <span class="slider"></span>
+  <div id="btn-toggle" touch-action="none">
+    <i id="btn-drag" class="fas fa-arrows-alt fa-2x" aria-hidden="true" style="float: right; cursor: grab;" touch-action="none"></i>
+    <h3 touch-action="none">Flight Price</h3>
+    Absolute <label class="switch" touch-action="none">
+      <input type="checkbox" id="btn-toggle-box" touch-action="none">
+      <span class="slider" touch-action="none"></span>
     </label> Relative
   </div>
   <div id="map"></div>
