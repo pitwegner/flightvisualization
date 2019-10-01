@@ -48,6 +48,7 @@ html, body {
 
 /* The slider */
 .slider {
+  border-radius: 10px;
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -60,6 +61,7 @@ html, body {
 }
 
 .slider:before {
+  border-radius: 7px;
   position: absolute;
   content: "";
   height: 14px;
